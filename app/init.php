@@ -13,14 +13,14 @@
     define('APP_ROOT', 'http://localhost/pos');
   }else{
     /** production config **/
-    define('DB_NAME', '');
-    define('HOST_NAME', '');
-    define('HOST_USER', '');
-    define('HOST_PASS', '');
+    define('DB_NAME', 'prosdfwo_pos_db');
+    define('HOST_NAME', 'premium281.web-hosting.com');
+    define('HOST_USER', 'prosdfwo_pos_db');
+    define('HOST_PASS', 'POS_db2025');
     define('DB_DRIVER', 'mysql');
     define('DB_CHARSET', 'utf8mb4');
     define('DB_PORT', '3306');
-    define('APP_ROOT', 'https://yourdomain.com');
+    define('APP_ROOT', 'https://www.mominkhan.prosensia.pk');
   }
 
   const DEBUG_MODE = true;
