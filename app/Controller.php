@@ -146,7 +146,6 @@ class Controller extends User
 
     public function addProduct(array $request)
     {
-        // Extract values from request array
         $batch = $request['batch'] ?? '';
         $item = $request['item'] ?? '';
         $item_desc = $request['item_desc'] ?? '';
@@ -157,16 +156,14 @@ class Controller extends User
         $barcode = $request['barcode'] ?? '';
         $supplierId = (int) ($request['supId'] ?? 0);
         $wareId = (int) ($request['wareId'] ?? 0);
-        $mft_date = $request['mft_date'] ?? '';
-        $expiry_date = $request['expiry_date'] ?? '';
+        $mft_date = $request['mft_date'] ?? null;
+        $expiry_date = $request['expiry_date'] ?? null;
         $category = $request['category'] ?? '';
-        $today_date = date("Y-m-d H:i:s");
+        $today_date = date("Y-m-d");
 
-        // Calculate totals
         $costTotal = $cost * $qty;
         $saleTotal = $price * $qty;
 
-        // Call the actual method from trait
         return $this->CreateProduct(
             $batch,
             $item,
@@ -186,6 +183,7 @@ class Controller extends User
             $saleTotal
         );
     }
+
 
 
     public function updateProduct(array $request = [], array $file = [])
