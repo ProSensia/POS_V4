@@ -146,25 +146,60 @@ class Controller extends User
 
     public function addProduct(array $request)
     {
-        $batch = $request['batch'] ?? '';
-        $item = $request['item'] ?? '';
-        $item_desc = $request['item_desc'] ?? '';
-        $cost = (float) ($request['cost_price'] ?? 0);
-        $profit = (float) ($request['profit'] ?? 0);
-        $price = (float) ($request['selling_price'] ?? 0);
-        $qty = (int) ($request['qty'] ?? 0);
-        $barcode = $request['barcode'] ?? '';
-        $supplierId = (int) ($request['supId'] ?? 0);
-        $wareId = (int) ($request['wareId'] ?? 0);
-        $mft_date = $request['mft_date'] ?? null;
-        $expiry_date = $request['expiry_date'] ?? null;
-        $category = $request['category'] ?? '';
+        // Prepare response
+        $errors = [];
+
+        // Sanitize & Validate
+        $batch = trim($request['batch'] ?? '');
+        $item = trim($request['item'] ?? '');
+        $item_desc = trim($request['item_desc'] ?? '');
+        $cost = isset($request['cost_price']) ? (float) $request['cost_price'] : 0;
+        $profit = isset($request['profit']) ? (float) $request['profit'] : 0;
+        $price = isset($request['selling_price']) ? (float) $request['selling_price'] : 0;
+        $qty = isset($request['qty']) ? (int) $request['qty'] : 0;
+        $barcode = trim($request['barcode'] ?? '');
+        $supplierId = isset($request['supId']) ? (int) $request['supId'] : 0;
+        $wareId = isset($request['wareId']) ? (int) $request['wareId'] : 0;
+        $mft_date = $request['mft_date'] ?? '';
+        $expiry_date = $request['expiry_date'] ?? '';
+        $category = trim($request['category'] ?? '');
         $today_date = date("Y-m-d");
 
+        // Validation
+        if ($item === '')
+            $errors[] = "Product name is required.";
+        if ($item_desc === '')
+            $errors[] = "Product description is required.";
+        if ($cost <= 0)
+            $errors[] = "Cost price must be greater than 0.";
+        if ($price <= 0)
+            $errors[] = "Selling price must be greater than 0.";
+        if ($qty <= 0)
+            $errors[] = "Quantity must be greater than 0.";
+        if ($barcode === '')
+            $errors[] = "Barcode is required.";
+        if ($supplierId <= 0)
+            $errors[] = "Supplier must be selected.";
+        if ($wareId <= 0)
+            $errors[] = "Warehouse must be selected.";
+        if ($mft_date === '')
+            $errors[] = "MFT date is required.";
+        if ($expiry_date === '')
+            $errors[] = "Expiry date is required.";
+        if ($category === '')
+            $errors[] = "Category is required.";
+
+        // If any errors, return as string list
+        if (!empty($errors)) {
+            return '<div class="alert alert-danger"><ul><li>' . implode('</li><li>', $errors) . '</li></ul></div>';
+        }
+
+        // Totals
         $costTotal = $cost * $qty;
         $saleTotal = $price * $qty;
 
-        return $this->CreateProduct(
+        // Try to insert into DB
+        $result = $this->CreateProduct(
             $batch,
             $item,
             $item_desc,
@@ -182,7 +217,14 @@ class Controller extends User
             $costTotal,
             $saleTotal
         );
+
+        if ($result === "Yes") {
+            return '<div class="alert alert-success">Product added successfully.</div>';
+        } else {
+            return '<div class="alert alert-danger">Something went wrong while saving product. Please try again.</div>';
+        }
     }
+
 
 
 
