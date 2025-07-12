@@ -148,13 +148,13 @@ protected static function MyStr():string
     public function addProduct(array $request) 
     {
         
-        return $this->premium_notification();
+        return $this->addProduct($request);
     }
 
 
     public function updateProduct(array $request= [], array $file=[])
     {
-       return $this->premium_notification();
+       return $this->updateProduct($request);
     }
 
     public function getProducts()
