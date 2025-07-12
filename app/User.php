@@ -359,14 +359,14 @@ class User
 
   private function checkDemoLogger(string $field, string $value): bool
   {
-    $query = "SELECT * FROM demo_loggers_tbl WHERE $field=? LIMIT 1;";
-    $stmt = $this->connect()->prepare($query);
-    $stmt->execute([$value]);
-    if ($stmt->rowCount() > 0) {
-      return true;
-    } else {
+    // $query = "SELECT * FROM demo_loggers_tbl WHERE $field=? LIMIT 1;";
+    // $stmt = $this->connect()->prepare($query);
+    // $stmt->execute([$value]);
+    // if ($stmt->rowCount() > 0) {
+    //   return true;
+    // } else {
       return false;
-    }
+    // }
   }
 
   private function createLoggers($ip, $email, $phone): bool
