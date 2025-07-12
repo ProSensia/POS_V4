@@ -1,3 +1,4 @@
+
 <?php 
    require_once "helper.php";
    
@@ -136,37 +137,47 @@
                            </div>
                         </div>
                         <div class="row g-3 mb-3">
+                           <!-- <div class="col-md-4">
                            <div class="col-md-4">
                               <label for="supplier" class="form-label">Supplier By</label>
                               <select class="form-select form-control custom-select form-control-lg" name="supplier">
                                  <option value="" selected>Choose...</option>
+                                 <?php //echo $Controller->showSuppliersInDropDownList();?>
                                  <?php echo $Controller->showSuppliersInDropDownList();?>
                               </select>
+                           </div> -->
+                           <!-- <div class="col-md-4">
                            </div>
                            <div class="col-md-4">
                               <label for="category" class="form-label">Item Category</label>
                               <select class="form-select form-control custom-select form-control-lg" name="category">
                            <option value="" selected>Choose...</option>
+                              <?php //echo $Controller->showCategoriesInDropDownList();?>
                               <?php echo $Controller->showCategoriesInDropDownList();?>
                               </select>
+                           </div> -->
+                           <!--  <div class="col-md-4">
                            </div>
                             <div class="col-md-4">
                               <label for="store_id" class="form-label">Warehouse/Store</label>
                               <select class="form-select form-control custom-select form-control-lg" name="store_id">
                            <option value="" selected>Choose...</option>
+                              <?php //echo $Controller->showWarehousesInDropDownList();?>
                               <?php echo $Controller->showWarehousesInDropDownList();?>
                               </select>
+                           </div> -->
                            </div>
                         </div>
+                        <!-- <div class="row g-3 mb-3">
                         <div class="row g-3 mb-3">
                            <div class="col-sm-6">
                               <label class="form-label">MFT Date</label>
                               <input type="date" name="mft_date" class="form-control form-control-lg">
-                           </div>
-                           <div class="col-sm-6">
+@ -167,129 +167,129 @@
                               <label class="form-label">Best Before (BB)</label>
                               <input type="date" name="expiry_date" class="form-control form-control-lg">
                            </div>
+                        </div> -->
                         </div>
                         <?php $Controller->getKeyValuePairs("kme_product","create_new_product");?>
                         <div class="modal-footer">
