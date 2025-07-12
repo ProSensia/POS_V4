@@ -145,47 +145,32 @@ class Controller extends User
 
 
     public function addProduct(array $request)
-    {
-        // Extract values from request array
-        $batch = $request['batch'] ?? '';
-        $item = $request['item'] ?? '';
-        $item_desc = $request['item_desc'] ?? '';
-        $cost = (float) ($request['cost_price'] ?? 0);
-        $profit = (float) ($request['profit'] ?? 0);
-        $price = (float) ($request['selling_price'] ?? 0);
-        $qty = (int) ($request['qty'] ?? 0);
-        $barcode = $request['barcode'] ?? '';
-        $supplierId = (int) ($request['supId'] ?? 0);
-        $wareId = (int) ($request['wareId'] ?? 0);
-        $mft_date = $request['mft_date'] ?? '';
-        $expiry_date = $request['expiry_date'] ?? '';
-        $category = $request['category'] ?? '';
-        $today_date = date("Y-m-d H:i:s");
+{
+    $batch = $request['batch'] ?? '';
+    $item = $request['item'] ?? '';
+    $item_desc = $request['item_desc'] ?? '';
+    $cost = (float) ($request['cost'] ?? 0);
+    $price = (float) ($request['item_price'] ?? 0);
+    $qty = (int) ($request['item_qty'] ?? 0);
+    $profit = $price - $cost;
+    $barcode = $request['barcode'] ?? '';
+    $supplierId = (int) ($request['supplier'] ?? 0);
+    $wareId = (int) ($request['store_id'] ?? 0);
+    $mft_date = $request['mft_date'] ?? '';
+    $expiry_date = $request['expiry_date'] ?? '';
+    $category = $request['category'] ?? '';
+    $today_date = date("Y-m-d");
 
-        // Calculate totals
-        $costTotal = $cost * $qty;
-        $saleTotal = $price * $qty;
+    $costTotal = $cost * $qty;
+    $saleTotal = $price * $qty;
 
-        // Call the actual method from trait
-        return $this->CreateProduct(
-            $batch,
-            $item,
-            $item_desc,
-            $cost,
-            $profit,
-            $price,
-            $qty,
-            $barcode,
-            $supplierId,
-            $wareId,
-            $mft_date,
-            $expiry_date,
-            $category,
-            $today_date,
-            $costTotal,
-            $saleTotal
-        );
-    }
+    return $this->CreateProduct(
+        $batch, $item, $item_desc, $cost, $profit, $price, $qty,
+        $barcode, $supplierId, $wareId, $mft_date, $expiry_date,
+        $category, $today_date, $costTotal, $saleTotal
+    );
+}
+
 
 
     public function updateProduct(array $request = [], array $file = [])
