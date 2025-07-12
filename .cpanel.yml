@@ -1,0 +1,6 @@
+deployment:
+  tasks:
+    - export COMPOSER_ALLOW_SUPERUSER=1
+    - /usr/local/bin/composer install --no-dev
+    - php artisan migrate --force
+    - php artisan config:cache
