@@ -27,12 +27,12 @@
   define('APP_VERSION', 'v4');
   define('APP_COPYRIGHT', '&copy; '.date("Y"));
   define('APP_AUTHOR', 'hceTPREtalF');
-  define('APP_AUTHOR_EMAIL', 'info@prosensia.pk');
-  define('APP_AUTHOR_PHONE', '+92 3107717890');
-  define('APP_AUTHOR_ADDRESS', 'Building C2, PAF-IAST, Mang, Haripur');
+  define('APP_AUTHOR_EMAIL', 'info@flaterptech.com');
+  define('APP_AUTHOR_PHONE', '+23470-3331-5307');
+  define('APP_AUTHOR_ADDRESS', 'Sango Ota, Ogun State, Nigeria');
   define('APP_LANG_VERSION', 'PHP_8.1');
   define('APP_NAME', ['POS (Point Of Sales)','POS SYSTEM']);
-  define('APP_CURRENCY', '₨');
+  define('APP_CURRENCY', '&#8358;');
   define('APP_THEME_COLOUR', 'tradewind');
   //cyan,tradewind,monalisa,blue,orange,green,blush,red
    const ENCRYPTION_METHOD = "AES-256-CBC";//
