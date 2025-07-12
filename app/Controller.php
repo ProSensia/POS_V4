@@ -312,9 +312,8 @@ public function CreateWahouse(array $request)
     return $this->premium_notification();
 }
 
-protected function premium_notification():string
-{
-    return $this->toast("info","This is a DEMO VERSION,  <a href='https://flaterptech.com/#linkAppPurchase' target='_blank' title='Click here' style='color:red;'> CLICK HERE NOW</a> to Purchase Full version!");
+protected function premium_notification(): string {
+    return ''; // DEMO restriction disabled
 }
 
    public function getWarehouses()
