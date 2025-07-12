@@ -146,10 +146,27 @@ protected static function MyStr():string
 
 
     public function addProduct(array $request) 
-    {
-        
-        return $this->addProduct($request);
-    }
+{
+    return $this->CreateProduct(
+        $request['batch'],
+        $request['item'],
+        $request['item_desc'],
+        $request['cost'],
+        $request['profit'],
+        $request['price'],
+        $request['qty'],
+        $request['barcode'],
+        $request['supplierId'],
+        $request['wareId'],
+        $request['mft_date'],
+        $request['expiry_date'],
+        $request['category'],
+        $request['today_date'],
+        $request['costTotal'],
+        $request['saleTotal']
+    );
+}
+
 
 
     public function updateProduct(array $request= [], array $file=[])
